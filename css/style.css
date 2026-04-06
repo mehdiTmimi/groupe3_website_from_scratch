@@ -47,3 +47,29 @@ header .sign-up {
 header .sign-up:hover {
   background: #72c01a;
 }
+
+/* main */
+main{
+    padding: 5%;
+}
+main .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    background: #f5efb5;
+background: linear-gradient(90deg, rgba(245, 239, 181, 1) 0%, rgba(201, 230, 195, 1) 100%);
+    padding: 25px;
+    border-radius: 20px;
+}
+
+main .hero p{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+main .hero a{
+    color: inherit;
+    text-decoration: underline;
+    margin-right: 5px;
+}
