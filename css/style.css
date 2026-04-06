@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+header nav ol {
+  display: flex;
+  gap: 40px;
+}
+header nav li {
+  display: block;
+  color: black;
+}
+header .logo svg {
+  height: 20px;
+}
+
+header a {
+  color: inherit;
+}
+header > div {
+  display: flex;
+  gap: 10px;
+}
+header button {
+  cursor: pointer;
+}
+header .log-in {
+  border: 0;
+  background: none;
+  text-transform: capitalize;
+}
+header .sign-up {
+  border: 0;
+  background: #59990f;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: white;
+  transition-duration: 1s;
+}
+header .sign-up:hover {
+  background: #72c01a;
+}
