@@ -1,0 +1,28 @@
+#animation-from-upwork {
+    border-radius: 12px;
+    max-width: 50%;
+    min-width: 50%;
+    overflow: hidden;
+}
+
+#animation-from-upwork .hourly-cost-calculator-image {
+    align-content: center;
+    border-radius: 12px;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+#animation-from-upwork .hourly-cost-calculator-image svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 699.98px) {
+    #animation-from-upwork {
+        max-width: 100%;
+        min-width: 100%;
+        order: 1;
+    }
+}

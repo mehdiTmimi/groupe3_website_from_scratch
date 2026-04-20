@@ -183,3 +183,75 @@ main .hero a {
 .section1 ul a span {
   margin-left: 5px;
 }
+
+/* -------------------------- section 2 ------------ */
+.section2{
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  margin-top: 40px;
+  display: flex;
+}
+.section2>div{
+  flex: 1;
+}
+.section2>div:first-child{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-size: cover;
+  gap: 20px;
+  padding: 60px;
+}
+.section2>div:first-child h2{
+  font-size: 3em;
+}
+.section2>div:first-child p{
+  font-size: 1.2em;
+}
+.section2 .next-div-section2{
+  min-height: 100px;
+  height: auto;
+  background: white;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  border-radius: 20px;
+}
+.section2 .next-div-section2 textarea{
+  border: 0;
+  outline: none;
+  font-size: 1.2em;
+  height: 100%;
+  flex: 1;
+  resize: none;
+  field-sizing: content;
+  width: 0px;           
+}
+.section2 .next-div-section2 textarea:focus + button svg{
+  display: none;
+}
+.section2 .next-div-section2 button span{
+  display: none;
+}
+.section2 .next-div-section2 textarea:focus + button span{
+  display: block;
+}
+.section2 .next-div-section2 button{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 10px;
+  border: 0;
+  border-radius: 20px;
+  color: white;
+  background-color: black;
+}
+.section2 .next-div-section2 button svg{
+  color: #d2ff00;
+  width: 20px;
+  height: 20px;
+}
