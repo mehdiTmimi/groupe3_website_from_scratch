@@ -1,5 +1,5 @@
 // ajouter les donnes d un etudiant a la table html
-const addStudentToTable = student => {
+const addStudentToTable = (student) => {
     const tr = document.createElement('tr')
     const tdCne = document.createElement('td')
     const tdFirstName = document.createElement('td')
@@ -31,11 +31,13 @@ const addStudentToTable = student => {
 const addStudentToTable2 = (student) => { 
     tbody.innerHTML += `<tr>
                                 <td><span class="badge">${student.cne}</span></td>
-                                <td>${student.firstName}</td>
+                                <td>`+ student.firstName + `</td>
                                 <td>${student.lastName}</td>
                                 <td>${student.dateOfBirth}</td>
                                 <td class="td-actions">
                                     <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>`;
+
+    
 }

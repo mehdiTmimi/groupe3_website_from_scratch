@@ -6,6 +6,7 @@
     <title>Student Manager</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/utils.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
     <div class="app">
@@ -33,7 +34,7 @@
                     <p>Fill in the details below to register a new student.</p>
                 </div>
 
-                <form class="student-form" autocomplete="off">
+                <div class="student-form" autocomplete="off">
                     <div class="field">
                         <label for="cne">CNE</label>
                         <input type="text" id="cne" name="cne" placeholder="e.g. C123456789" required>
@@ -56,10 +57,10 @@
                     </div>
 
                     <div class="actions">
-                        <button type="reset" class="btn btn-ghost">Reset</button>
-                        <button type="submit" class="btn btn-primary">+ Add student</button>
+                        <button id="reset-btn" class="btn btn-ghost">Reset</button>
+                        <button id="add-btn" class="btn btn-primary">+ Add student</button>
                     </div>
-                </form>
+                </div>
             </section>
 
             <!-- Students table -->
