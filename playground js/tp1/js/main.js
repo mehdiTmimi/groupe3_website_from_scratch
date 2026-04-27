@@ -1,11 +1,24 @@
 const resetBtn = document.getElementById("reset-btn")
 const addBtn = document.getElementById("add-btn")
+addBtn.setAttribute("disabled", "")
 const viderForm = () => {
     cne.value = ""
     firstname.value = ""
     lastname.value = ""
     dob.value = ""
 }
+cne.addEventListener('input', () => {
+    if (cne.value.length > 0 && cne.value.length != 8) {
+        cne.classList.add("error")
+        cne.classList.remove("valid")
+        document.getElementById("message-cne").textContent="cne must be 8 characters"
+    }
+    else {
+        cne.classList.remove("error")
+        cne.classList.add("valid")
+        document.getElementById("message-cne").textContent=""
+    }
+})
 resetBtn.addEventListener('click', () => {
     //vider les champs => vider les inputs => input.value = ""
     viderForm()
