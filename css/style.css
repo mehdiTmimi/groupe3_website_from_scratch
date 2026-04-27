@@ -66,6 +66,9 @@ main .hero {
   padding: 25px;
   border-radius: 20px;
 }
+main .hero div{
+  display: flex;
+}
 
 main .hero p {
   font-size: 2em;
@@ -76,6 +79,7 @@ main .hero a {
   color: inherit;
   text-decoration: underline;
   margin-right: 5px;
+  width: max-content;
 }
 
 /* -------------------- section 1 main -------------------- */
@@ -254,4 +258,25 @@ main .hero a {
   color: #d2ff00;
   width: 20px;
   height: 20px;
+}
+
+@media screen and (max-width:900px){
+  .section2{
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  .section1{
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width:500px){
+  main{
+    padding: 8px;
+  }
+  .section1{
+    padding: 8px;
+  }
+  .section2>div:first-child{
+    padding: 8px;
+  }
 }
