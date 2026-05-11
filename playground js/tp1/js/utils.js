@@ -31,7 +31,7 @@ const addStudentToTable = (student) => {
 const addStudentToTable2 = (student) => { 
     tbody.innerHTML += `<tr>
                                 <td><span class="badge">${student.cne}</span></td>
-                                <td>`+ student.firstName + `</td>
+                                <td> ${student.firstName} </td>
                                 <td>${student.lastName}</td>
                                 <td>${student.dateOfBirth}</td>
                                 <td class="td-actions">
@@ -40,4 +40,13 @@ const addStudentToTable2 = (student) => {
                             </tr>`;
 
     
+}
+
+const checkFormValidity = () => {
+    if(document.querySelector(".student-form").getElementsByClassName("valid").length == 4) {
+        addBtn.removeAttribute("disabled")
+    }
+    else {
+        addBtn.setAttribute("disabled", "true")
+    }
 }

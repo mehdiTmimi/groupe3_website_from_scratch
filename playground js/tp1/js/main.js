@@ -1,6 +1,6 @@
 const resetBtn = document.getElementById("reset-btn")
 const addBtn = document.getElementById("add-btn")
-addBtn.setAttribute("disabled", "")
+addBtn.setAttribute("disabled", "true")
 const viderForm = () => {
     cne.value = ""
     firstname.value = ""
@@ -8,7 +8,7 @@ const viderForm = () => {
     dob.value = ""
 }
 cne.addEventListener('input', () => {
-    if (cne.value.length > 0 && cne.value.length != 8) {
+    if (cne.value.length != 8) {
         cne.classList.add("error")
         cne.classList.remove("valid")
         document.getElementById("message-cne").textContent="cne must be 8 characters"
@@ -18,6 +18,46 @@ cne.addEventListener('input', () => {
         cne.classList.add("valid")
         document.getElementById("message-cne").textContent=""
     }
+    checkFormValidity()
+})
+lastname.addEventListener('input', () => {
+    if (lastname.value.length < 3) {
+        lastname.classList.add("error")
+        lastname.classList.remove("valid")
+        document.getElementById("message-lastname").textContent="lastname must be at least 3 characters"
+    }
+    else {
+        lastname.classList.remove("error")
+        lastname.classList.add("valid")
+        document.getElementById("message-lastname").textContent=""
+    }
+    checkFormValidity()
+})
+firstname.addEventListener('input', () => {
+    if (firstname.value.length < 3) {
+        firstname.classList.add("error")
+        firstname.classList.remove("valid")
+        document.getElementById("message-firstname").textContent="firstname must be at least 3 characters"
+    }
+    else {
+        firstname.classList.remove("error")
+        firstname.classList.add("valid")
+        document.getElementById("message-firstname").textContent=""
+    }
+    checkFormValidity()
+})
+dob.addEventListener('input', () => {
+   if(dob.value == "") {
+    dob.classList.add("error")
+    dob.classList.remove("valid")
+    document.getElementById("message-dob").textContent="date of birth is required"
+   }
+   else {
+    dob.classList.remove("error")
+    dob.classList.add("valid")
+    document.getElementById("message-dob").textContent=""
+   }
+   checkFormValidity()
 })
 resetBtn.addEventListener('click', () => {
     //vider les champs => vider les inputs => input.value = ""
