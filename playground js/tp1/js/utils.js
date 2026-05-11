@@ -28,8 +28,9 @@ const addStudentToTable = (student) => {
 
 }
 
-const addStudentToTable2 = (student) => { 
-    tbody.innerHTML += `<tr>
+const addStudentToTable2 = (student) => {
+    const tr = document.createElement('tr')
+    tr.innerHTML += `
                                 <td><span class="badge">${student.cne}</span></td>
                                 <td> ${student.firstName} </td>
                                 <td>${student.lastName}</td>
@@ -37,16 +38,34 @@ const addStudentToTable2 = (student) => {
                                 <td class="td-actions">
                                     <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
-                            </tr>`;
+                            `;
+    tr.querySelector(".btn-danger").addEventListener("click", () => {
+        let newStudents = []
+        for (let i = 0; i < students.length; i++)
+            if (students[i].cne != student.cne)
+                newStudents.push(students[i])
+        students = newStudents
+        refreshStat()
+        localStorage.students = JSON.stringify(students)
+        tr.remove()
+    })
+    tbody.append(tr)
 
-    
 }
 
 const checkFormValidity = () => {
-    if(document.querySelector(".student-form").getElementsByClassName("valid").length == 4) {
+    if (document.querySelector(".student-form").getElementsByClassName("valid").length == 4) {
         addBtn.removeAttribute("disabled")
     }
     else {
         addBtn.setAttribute("disabled", "true")
     }
+}
+const searchStudentByCne = (cne) => {
+    for (let i = 0; i < students.length; i++) {
+        if (students[i].cne == cne) {
+            return students[i]
+        }
+    }
+    return null
 }

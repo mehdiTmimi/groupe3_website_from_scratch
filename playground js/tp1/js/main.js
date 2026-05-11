@@ -11,12 +11,12 @@ cne.addEventListener('input', () => {
     if (cne.value.length != 8) {
         cne.classList.add("error")
         cne.classList.remove("valid")
-        document.getElementById("message-cne").textContent="cne must be 8 characters"
+        document.getElementById("message-cne").textContent = "cne must be 8 characters"
     }
     else {
         cne.classList.remove("error")
         cne.classList.add("valid")
-        document.getElementById("message-cne").textContent=""
+        document.getElementById("message-cne").textContent = ""
     }
     checkFormValidity()
 })
@@ -24,12 +24,12 @@ lastname.addEventListener('input', () => {
     if (lastname.value.length < 3) {
         lastname.classList.add("error")
         lastname.classList.remove("valid")
-        document.getElementById("message-lastname").textContent="lastname must be at least 3 characters"
+        document.getElementById("message-lastname").textContent = "lastname must be at least 3 characters"
     }
     else {
         lastname.classList.remove("error")
         lastname.classList.add("valid")
-        document.getElementById("message-lastname").textContent=""
+        document.getElementById("message-lastname").textContent = ""
     }
     checkFormValidity()
 })
@@ -37,27 +37,27 @@ firstname.addEventListener('input', () => {
     if (firstname.value.length < 3) {
         firstname.classList.add("error")
         firstname.classList.remove("valid")
-        document.getElementById("message-firstname").textContent="firstname must be at least 3 characters"
+        document.getElementById("message-firstname").textContent = "firstname must be at least 3 characters"
     }
     else {
         firstname.classList.remove("error")
         firstname.classList.add("valid")
-        document.getElementById("message-firstname").textContent=""
+        document.getElementById("message-firstname").textContent = ""
     }
     checkFormValidity()
 })
 dob.addEventListener('input', () => {
-   if(dob.value == "") {
-    dob.classList.add("error")
-    dob.classList.remove("valid")
-    document.getElementById("message-dob").textContent="date of birth is required"
-   }
-   else {
-    dob.classList.remove("error")
-    dob.classList.add("valid")
-    document.getElementById("message-dob").textContent=""
-   }
-   checkFormValidity()
+    if (dob.value == "") {
+        dob.classList.add("error")
+        dob.classList.remove("valid")
+        document.getElementById("message-dob").textContent = "date of birth is required"
+    }
+    else {
+        dob.classList.remove("error")
+        dob.classList.add("valid")
+        document.getElementById("message-dob").textContent = ""
+    }
+    checkFormValidity()
 })
 resetBtn.addEventListener('click', () => {
     //vider les champs => vider les inputs => input.value = ""
@@ -66,6 +66,10 @@ resetBtn.addEventListener('click', () => {
 addBtn.addEventListener('click', function () {
     //recuperation des valeurs
     let cneValue = cne.value
+    if(searchStudentByCne(cneValue) != null) {
+        alert("student with this cne already exists")
+        return
+    }
     let firstNameValue = firstname.value
     let lastNameValue = lastname.value
     let dobValue = dob.value
@@ -76,5 +80,23 @@ addBtn.addEventListener('click', function () {
         dateOfBirth: dobValue
     }
     addStudentToTable2(student)
+    students.push(student)
+    refreshStat()
+    localStorage.students = JSON.stringify(students)
     viderForm()
+    addBtn.setAttribute("disabled", "true")
 })
+const refreshStat = () => {
+    document.querySelector(".stat-value").textContent = students.length
+}
+// load data from local storage
+let students = localStorage.students || "[]"
+students = JSON.parse(students)
+// students.forEach(student=>addStudentToTable2(student))
+// students.forEach(function(student){
+//         addStudentToTable2(student)
+//     })
+refreshStat()
+for(let i=0;i<students.length;i++){
+    addStudentToTable2(students[i])
+}
