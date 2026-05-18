@@ -27,14 +27,21 @@ const addStudentToTable = (student) => {
     button.setAttribute("type", "button")
 
 }
-
+const escapeHtml = (text) => {
+    text =text.replace("&", "&amp;")
+    text = text.replace("<", "&lt;")
+    text = text.replace(">", "&gt;")
+    text = text.replace('"', "&quot;")
+    text = text.replace("'", "&#039;")
+    return text
+}
 const addStudentToTable2 = (student) => {
     const tr = document.createElement('tr')
     tr.innerHTML += `
-                                <td><span class="badge">${student.cne}</span></td>
-                                <td> ${student.firstName} </td>
-                                <td>${student.lastName}</td>
-                                <td>${student.dateOfBirth}</td>
+                                <td><span class="badge">${escapeHtml(student.cne)}</span></td>
+                                <td> ${escapeHtml(student.firstName)} </td>
+                                <td>${escapeHtml(student.lastName)}</td>
+                                <td>${escapeHtml(student.dateOfBirth)}</td>
                                 <td class="td-actions">
                                     <button type="button" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
