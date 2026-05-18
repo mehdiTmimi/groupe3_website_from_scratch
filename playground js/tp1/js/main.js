@@ -6,8 +6,18 @@ const viderForm = () => {
     firstname.value = ""
     lastname.value = ""
     dob.value = ""
+    cne.classList.remove("valid")
+    cne.classList.remove("error")
+    firstname.classList.remove("valid", "error")
+    lastname.classList.remove("valid", "error")
+    dob.classList.remove("valid", "error")
+    document.getElementById("message-firstname").textContent = ""
+    document.getElementById("message-lastname").textContent = ""
+    document.getElementById("message-cne").textContent = ""
+    document.getElementById("message-dob").textContent = ""
+
 }
-cne.addEventListener('input', () => {
+const verifyCne = () => {
     if (cne.value.length != 8) {
         cne.classList.add("error")
         cne.classList.remove("valid")
@@ -18,6 +28,12 @@ cne.addEventListener('input', () => {
         cne.classList.add("valid")
         document.getElementById("message-cne").textContent = ""
     }
+}
+cne.addEventListener('focusout', () => {
+    verifyCne()
+})
+cne.addEventListener('input', () => {
+    verifyCne()
     checkFormValidity()
 })
 lastname.addEventListener('input', () => {
@@ -66,7 +82,7 @@ resetBtn.addEventListener('click', () => {
 addBtn.addEventListener('click', function () {
     //recuperation des valeurs
     let cneValue = cne.value
-    if(searchStudentByCne(cneValue) != null) {
+    if (searchStudentByCne(cneValue) != null) {
         alert("student with this cne already exists")
         return
     }
@@ -97,6 +113,19 @@ students = JSON.parse(students)
 //         addStudentToTable2(student)
 //     })
 refreshStat()
-for(let i=0;i<students.length;i++){
+for (let i = 0; i < students.length; i++) {
     addStudentToTable2(students[i])
 }
+cne.focus()
+
+document.getElementById("search-input").addEventListener("input",()=>{
+    let value = document.getElementById("search-input").value
+    let trs = tbody.getElementsByTagName("tr")
+    for(let i=0;i<trs.length;i++)
+    {
+        if(trs[i].innerText.toLowerCase().search(value.toLowerCase())==-1)
+            trs[i].classList.add("hide-tr")
+        else 
+            trs[i].classList.remove("hide-tr")
+    }
+})

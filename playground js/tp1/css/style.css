@@ -489,3 +489,6 @@ body {
 .valid {
   border: 2px solid green!important;
 }
+.hide-tr{
+  display: none;
+}
